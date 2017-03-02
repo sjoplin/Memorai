@@ -1,18 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
 /*
  * Responsible for spawning enemies at the beginning of the level
  */
 public class Spawner : MonoBehaviour {
     public GameObject[] spawner;
     public int maxSpawnPerWave;
+    public UnityEvent finishEvent;
 
     ArrayList curList = new ArrayList();
 
     int spawnCounter = 0;
     bool triggered = false;
+    bool finished = false;
 
     public void spawn() {
         int waveCounter = 0;
@@ -34,6 +36,10 @@ public class Spawner : MonoBehaviour {
     void Update() {
         if (curList.Count <= 0 && spawnCounter < spawner.Length && triggered) {
             spawn();
+        }
+        if (spawnCounter >= spawner.Length && curList.Count == 0 && !finished) {
+            finishEvent.Invoke();
+            finished = true;
         }
     }
 

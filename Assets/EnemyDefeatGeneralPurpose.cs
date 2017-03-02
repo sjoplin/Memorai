@@ -38,7 +38,7 @@ public class EnemyDefeatGeneralPurpose : MonoBehaviour {
 
         if (other.gameObject.tag == "sword" && sword.activated && isVunerable) {
             if (impactEffect) Instantiate(impactEffect, impactPoint, Quaternion.identity);
-            if (knockback) rig.velocity = new Vector2(-dir * 20, rig.velocity.y);
+            if (knockback && rig != null) rig.velocity = new Vector2(-dir * 20, rig.velocity.y);
 
 
             if (animator) animator.SetBool("Hurt", true);

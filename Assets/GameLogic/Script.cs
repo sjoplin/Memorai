@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using System.Text.RegularExpressions;
 
 /**
  * Used to say something through the speech system.
@@ -13,7 +14,7 @@ using UnityEngine.Events;
 public class Script : MonoBehaviour {
     public Text screenText;
     public Image image;
-
+    public float textTime = 2.5f;
     public bool startOnPlay;
     [Tooltip("The dialogue to be said through the speech system. Press enter for new line")]
     [TextArea]
@@ -30,14 +31,16 @@ public class Script : MonoBehaviour {
     }
 
     public void play() {
-        if (gameObject.tag == "speech") {
-            StartCoroutine(fadeInImage(image));
-            StartCoroutine(playScript());
-        } else {
-            Script script = GameObject.FindGameObjectWithTag("speech").GetComponent<Script>();
-            script.createScript(dialogue);
-            StartCoroutine(script.fadeInImage(image));
-            StartCoroutine(script.playScript());
+        if (!playing) {
+            if (gameObject.tag == "speech") {
+                StartCoroutine(fadeInImage(image));
+                StartCoroutine(playScript());
+            } else {
+                Script script = GameObject.FindGameObjectWithTag("speech").GetComponent<Script>();
+                script.createScript(dialogue);
+                StartCoroutine(script.fadeInImage(image));
+                StartCoroutine(script.playScript());
+            }
         }
     }
 
@@ -68,6 +71,7 @@ public class Script : MonoBehaviour {
 
     IEnumerator playScript() {
         if (!playing) {
+            playing = true;
             screenText.enabled = true;
             foreach (Quote quote in quotes) {
                 screenText.text = quote.getLine();
@@ -76,6 +80,7 @@ public class Script : MonoBehaviour {
             StartCoroutine(fadeOutImage(image));
             if (endEvent != null) endEvent.Invoke();
         }
+        playing = false;
     }
 
     public Quote[] createScript(string body) {
@@ -83,7 +88,15 @@ public class Script : MonoBehaviour {
         Quote[] newQuotes = new Quote[bodyList.Length];
         int i = 0;
         while (i < bodyList.Length) {
-            newQuotes[i] = new Quote(bodyList[i]);
+            string bodyText = bodyList[i];
+            float timeOfText = textTime;
+            Regex reg = new Regex("{[.0-9]+}");
+            if (reg.IsMatch(bodyText)) {
+                float num = float.Parse(reg.Match(bodyText).ToString().Replace("{", "").Replace("}", ""));
+                timeOfText = num;
+                bodyText = bodyText.Replace(reg.Match(bodyText).ToString(), "");
+            }
+            newQuotes[i] = new Quote(bodyText, timeOfText);
             i++;
         }
         return newQuotes;

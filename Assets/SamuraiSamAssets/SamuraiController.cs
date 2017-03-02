@@ -54,7 +54,8 @@ public class SamuraiController : MonoBehaviour {
         //Animation triggers being set
         if (animator.GetBool("jumping")) animator.SetBool("jumping", false);
         if (health <= 0) animator.SetBool("Dead", true);
-        animator.SetBool("Up", Input.GetKey(KeyCode.UpArrow));
+        animator.SetBool("Up", Input.GetAxis("Vertical") > 0);
+        animator.SetBool("Down", Input.GetAxis("Vertical") < 0);
         dead = animator.GetBool("Dead");
         animator.SetBool("falling", Mathf.Abs(rig.velocity.y) > 0.05);
         runSpeedMod = Mathf.Abs(rig.velocity.x/maxRunSpeed);
@@ -72,29 +73,30 @@ public class SamuraiController : MonoBehaviour {
         }
 
         //Handles Movement
-        if (Input.GetKey(KeyCode.LeftArrow) && !runningStop && !dead) {
+        float axis = Input.GetAxis("Horizontal");
+        if (axis < 0 && !runningStop && !dead) {
             if (rig.velocity.x > -maxRunSpeed && !animator.GetBool("Hurt") && (!leftHit || leftHit.collider.gameObject.tag == "enemy") ) {
                 rig.velocity = new Vector2(rig.velocity.x - runAccel, rig.velocity.y);
             }
-        } else if (Input.GetKey(KeyCode.RightArrow) && !animator.GetBool("Hurt") && !runningStop && !dead) {
+        } else if (axis > 0 && !animator.GetBool("Hurt") && !runningStop && !dead) {
             if (rig.velocity.x < maxRunSpeed && (!rightHit || rightHit.collider.gameObject.tag == "enemy")) {
                 rig.velocity = new Vector2(rig.velocity.x + runAccel, rig.velocity.y);
             }
         }
 
         //Handles Attacking
-        if (Input.GetKeyDown(KeyCode.Z) && !dead) {
+        if (Input.GetButtonDown("Fire1") && !dead) {
             animator.SetBool("slash",true);
             if (Mathf.Abs(rig.velocity.x) > 2) {
                 runningStop = true;
             }
         }
-        if (Input.GetKeyUp(KeyCode.Z)) {
+        if (Input.GetButtonUp("Fire1")) {
             if (runningStop) runningStop = false;
         }
 
         //Handles Dodging
-        if (Input.GetKeyDown(KeyCode.X) && groundHit && !animator.GetBool("Hurt") && !animator.GetBool("dodge") && !dead) {
+        if (Input.GetButtonDown("Fire2") && groundHit && !animator.GetBool("Hurt") && !animator.GetBool("dodge") && !dead) {
             animator.SetBool("dodge", true);
             if (Mathf.Abs(rig.velocity.x) < 15) {
                 rig.velocity = new Vector2(-Mathf.Sign(transform.localScale.x) * 40, rig.velocity.y);
@@ -104,7 +106,7 @@ public class SamuraiController : MonoBehaviour {
         }
 
         //Handles Jumping
-        if (Input.GetKeyDown(KeyCode.Space) && !dead && !animator.GetBool("slash")) {
+        if (Input.GetButtonDown("Jump") && !dead && !animator.GetBool("slash")) {
             animator.SetBool("jumping", true);
             if (groundHit) {
                 rig.velocity = new Vector2(rig.velocity.x * 1, jumpVelocity);
@@ -119,6 +121,9 @@ public class SamuraiController : MonoBehaviour {
     }
 
     void OnTriggerEnter2D(Collider2D other) {
+        if (other.gameObject.tag == "gate") {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
         if (other.gameObject.tag == "enemy" && !animator.GetBool("dodge") && !animator.GetBool("Hurt") && !dead) {
             bool enemyHurt = false;
             if (other.gameObject.transform.root.gameObject.GetComponent<Animator>()) {
