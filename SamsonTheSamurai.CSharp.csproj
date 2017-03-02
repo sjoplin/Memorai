@@ -114,6 +114,7 @@
     <Compile Include="Assets\GameLogic\Quote.cs" />
     <Compile Include="Assets\GameLogic\Script.cs" />
     <Compile Include="Assets\GameLogic\Spawner.cs" />
+    <Compile Include="Assets\GameLogic\TitleScreenHandler.cs" />
     <Compile Include="Assets\GameLogic\UINumbering.cs" />
     <Compile Include="Assets\Graphics\FadeOut.cs" />
     <Compile Include="Assets\SamuraiSamAssets\SamuraiController.cs" />
@@ -127,6 +128,7 @@
     <None Include="Assets\Anima2D\Licenses.txt" />
     <None Include="Assets\Anima2D\Readme.txt" />
     <None Include="Assets\Anima2D\Version.txt" />
+    <None Include="Assets\Fonts\1001fonts-bad-mofo-eula.txt" />
     <None Include="Assets\Standard Assets\Effects\AmbientOcclusion\Resources\AmbientOcclusion.cginc" />
     <None Include="Assets\Standard Assets\Effects\AmbientOcclusion\Resources\AmbientOcclusion.shader" />
     <None Include="Assets\Standard Assets\Effects\AntiAliasing\FXAA\Resources\FXAA.shader" />

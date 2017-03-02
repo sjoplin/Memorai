@@ -16,7 +16,9 @@ public class CameraFuncs : MonoBehaviour {
     }
 	// Update is called once per frame
 	void Update () {
-		
+		if (Input.GetKeyDown(KeyCode.F1)) {
+            print(Screen.width + " , " + Screen.height);
+        }
 	}
     public void shakeOnce() {
         transform.position = new Vector3(Random.Range(origPos.x - shakeStr, origPos.x + shakeStr),

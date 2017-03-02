@@ -110,7 +110,7 @@ public class BadGuyBehaviour : MonoBehaviour {
         }
         if (!animator.GetBool("Hurt") && !animator.GetBool("Death")) {
             //transform.position = Vector2.MoveTowards(transform.position, attackTarget, 0.2f);
-            transform.position = Vector2.SmoothDamp(transform.position, attackTarget, ref relVel, 2, 80, 0.1f);
+            transform.position = Vector2.SmoothDamp(transform.position, attackTarget, ref relVel, 2, 3, 0.1f);
         }
         stateTime += Time.deltaTime;
         if (stateTime > 2) {
