@@ -5,7 +5,9 @@ using UnityEngine;
 public class FinalBossBehaviour : MonoBehaviour {
     CameraFuncs cam;
     Animator animator;
+    public EvilCloudFunctions clouds;
     public int health = 100;
+    public int attackProbability = 1000;
 
     public GameObject lightning;
 
@@ -20,6 +22,13 @@ public class FinalBossBehaviour : MonoBehaviour {
         openingCameraShake();    
         if (Input.GetKeyDown(KeyCode.L)) {
             Instantiate(lightning, new Vector3(0, 16, 0), Quaternion.identity);
+        }
+        if (!animator.GetBool("Awakening") && !animator.GetBool("Death") && Random.Range(0, attackProbability) == 0) {
+            if (health > 20) {
+                clouds.startSparks();
+            } else {
+                clouds.startSimulSparks();
+            }
         }
 	}
 
