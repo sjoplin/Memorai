@@ -8,6 +8,7 @@ public class FinalBossBehaviour : MonoBehaviour {
     public EvilCloudFunctions clouds;
     public int health = 100;
     public int attackProbability = 1000;
+    public float restTime = 10.0f;
 
     public GameObject lightning;
 
@@ -23,12 +24,13 @@ public class FinalBossBehaviour : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.L)) {
             Instantiate(lightning, new Vector3(0, 16, 0), Quaternion.identity);
         }
-        if (!animator.GetBool("Awakening") && !animator.GetBool("Death") && Random.Range(0, attackProbability) == 0) {
+        if (!animator.GetBool("Vunerable") && !animator.GetBool("Awakening") && !animator.GetBool("Death") && Random.Range(0, attackProbability) == 0) {
             if (health > 20) {
                 clouds.startSparks();
             } else {
                 clouds.startSimulSparks();
             }
+            StartCoroutine(cooldown());
         }
 	}
 
@@ -53,6 +55,8 @@ public class FinalBossBehaviour : MonoBehaviour {
     }
 
     public void hurt() {
+        animator.SetBool("Vunerable", false);
+        StopAllCoroutines();
         health -= 10;
         if (health <= 0) {
             death();
@@ -64,5 +68,15 @@ public class FinalBossBehaviour : MonoBehaviour {
         cam.shakeOnce();
     }
 
+    IEnumerator cooldown() {
+        if (animator.GetBool("Vunerable") == false) {
+            yield return new WaitForSeconds(5);
+            animator.SetBool("Vunerable", true);
+            yield return new WaitForSeconds(restTime);
+            if (animator.GetBool("Vunerable")) {
+                animator.SetBool("Vunerable", false);
+            }
+        }
+    }
 
 }

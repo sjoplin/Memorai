@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 114860880044220016}
   - component: {fileID: 61664951000416344}
   - component: {fileID: 114214296648891666}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: WingedEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
