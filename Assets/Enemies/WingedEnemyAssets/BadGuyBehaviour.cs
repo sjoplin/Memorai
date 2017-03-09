@@ -58,7 +58,7 @@ public class BadGuyBehaviour : MonoBehaviour {
             }
         }
 
-        if (state != 1 && state != 2 && Random.Range(0, 200) == 1) {
+        if (state != 1 && state != 2 && !animator.GetBool("Awakening") && Random.Range(0, 200) == 1) {
             attackTarget = player.transform.position;
             state = 1;
             animator.SetBool("Attack", true);

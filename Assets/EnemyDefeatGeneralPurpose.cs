@@ -53,4 +53,10 @@ public class EnemyDefeatGeneralPurpose : MonoBehaviour {
             if (hurtEvent != null) hurtEvent.Invoke();
         }
     }
+
+    void OnDestroy() {
+        if (GameObject.FindGameObjectWithTag("spawner")) {
+            GameObject.FindGameObjectWithTag("spawner").GetComponent<Spawner>().removeCurrent(gameObject);
+        }
+    }
 }

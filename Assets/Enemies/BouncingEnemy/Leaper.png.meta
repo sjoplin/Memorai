@@ -1,13 +1,11 @@
 fileFormatVersion: 2
-guid: 2719ce4d21a9a824596e09371e4d1723
-timeCreated: 1488930258
+guid: 51ca971459a603b4990cda5ba3f73b9d
+timeCreated: 1489029612
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: MageAtlas_0
-    21300002: MageAtlas_1
-    21300004: MageAtlas_2
-    21300006: MageAtlas_3
+    21300000: Leaper_0
+    21300002: Leaper_1
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -82,59 +80,33 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MageAtlas_0
+      name: Leaper_0
       rect:
         serializedVersion: 2
-        x: 3.7926798
-        y: 359.5046
-        width: 339.29886
-        height: 354.74997
+        x: 231.52058
+        y: 236
+        width: 324.75476
+        height: 319.66443
       alignment: 9
-      pivot: {x: 0.49427614, y: 0.49470165}
+      pivot: {x: 0.5018538, y: 0.48175517}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: MageAtlas_1
+      name: Leaper_1
       rect:
         serializedVersion: 2
-        x: 478
-        y: 407
-        width: 87
-        height: 294
+        x: 639
+        y: 250
+        width: 306
+        height: 308
       alignment: 9
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
-    - serializedVersion: 2
-      name: MageAtlas_2
-      rect:
-        serializedVersion: 2
-        x: 17.072042
-        y: 128.48605
-        width: 328.09323
-        height: 163.1915
-      alignment: 9
-      pivot: {x: 0.49201858, y: 0.49643484}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: MageAtlas_3
-      rect:
-        serializedVersion: 2
-        x: 915
-        y: 15
-        width: 313
-        height: 333
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
     outline: []
   spritePackingTag: 
-  userData: 
+  userData: 97585581577287
   assetBundleName: 
   assetBundleVariant: 
