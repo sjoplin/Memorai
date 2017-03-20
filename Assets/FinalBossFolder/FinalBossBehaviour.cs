@@ -21,8 +21,8 @@ public class FinalBossBehaviour : MonoBehaviour {
     
 	void Update () {
         openingCameraShake();    
-        if (Input.GetKeyDown(KeyCode.L)) {
-            Instantiate(lightning, new Vector3(0, 16, 0), Quaternion.identity);
+        if (health < 20) {
+            attackProbability = 10;
         }
         if (!animator.GetBool("Vunerable") && !animator.GetBool("Awakening") && !animator.GetBool("Death") && Random.Range(0, attackProbability) == 0) {
             if (health > 20) {

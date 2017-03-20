@@ -55,8 +55,11 @@ public class EnemyDefeatGeneralPurpose : MonoBehaviour {
     }
 
     void OnDestroy() {
-        if (GameObject.FindGameObjectWithTag("spawner")) {
-            GameObject.FindGameObjectWithTag("spawner").GetComponent<Spawner>().removeCurrent(gameObject);
-        }
+        try {
+            if (GameObject.FindGameObjectWithTag("spawner").GetComponent<Spawner>() != null) {
+                Spawner spawner = GameObject.FindGameObjectWithTag("spawner").GetComponent<Spawner>();
+                spawner.removeCurrent(gameObject);
+            }
+        } catch {}
     }
 }

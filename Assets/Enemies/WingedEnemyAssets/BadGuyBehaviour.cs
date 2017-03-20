@@ -77,6 +77,13 @@ public class BadGuyBehaviour : MonoBehaviour {
      * Function that is executed when enemy dies.
      */
     void deathBump() {
+        try {
+            Spawner spawner = GameObject.FindGameObjectWithTag("spawner").GetComponent<Spawner>();
+            CameraFuncs camfuncs = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFuncs>();
+            if (spawner != null && camfuncs != null && spawner.getCurArray().Count == 1 && (object)spawner.getCurArray()[spawner.getCurArray().Count - 1] == gameObject) {
+                camfuncs.startSlowMo();
+            }
+        } catch { }
         state = 2;
         rig.gravityScale = 3;
         animator.SetBool("Death", true);

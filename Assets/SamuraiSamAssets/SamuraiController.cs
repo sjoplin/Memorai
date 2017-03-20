@@ -20,10 +20,14 @@ public class SamuraiController : MonoBehaviour {
     bool dead = false;
     GameManager manager;
 
+
+    public bool dashOnStart = true;
 	// Use this for initialization
 	void Start () {
         rig = gameObject.GetComponent<Rigidbody2D>();
-        rig.velocity = new Vector2(50, rig.velocity.y); //Inital push to make him run onto screen when level starts
+
+        if (dashOnStart)  rig.velocity = new Vector2(50, rig.velocity.y); //Inital push to make him run onto screen when level starts
+
         animator = gameObject.GetComponent<Animator>();
         col = gameObject.GetComponent<CapsuleCollider2D>();
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFuncs>();
@@ -78,7 +82,7 @@ public class SamuraiController : MonoBehaviour {
             if (rig.velocity.x > -maxRunSpeed && !animator.GetBool("Hurt") && (!leftHit || leftHit.collider.gameObject.tag == "enemy") ) {
                 rig.velocity = new Vector2(rig.velocity.x - runAccel, rig.velocity.y);
             }
-        } else if (axis > 0 && !animator.GetBool("Hurt") && !runningStop && !dead) {
+        } else if (axis > 0 && !animator.GetBool("Hurt") && !runningStop && !dead && (!rightHit || rightHit.collider.gameObject.tag == "enemy")) {
             if (rig.velocity.x < maxRunSpeed && (!rightHit || rightHit.collider.gameObject.tag == "enemy")) {
                 rig.velocity = new Vector2(rig.velocity.x + runAccel, rig.velocity.y);
             }
@@ -96,12 +100,15 @@ public class SamuraiController : MonoBehaviour {
         }
 
         //Handles Dodging
-        if (Input.GetButtonDown("Fire2") && groundHit && !animator.GetBool("Hurt") && !animator.GetBool("dodge") && !dead) {
+        if (Input.GetButtonDown("Fire2") && !animator.GetBool("Down") && groundHit && !animator.GetBool("Hurt") && !animator.GetBool("dodge") && !dead) {
             animator.SetBool("dodge", true);
+            float dodgeDir = 1;
+            //dodgeDir = Mathf.Sign(Input.GetAxis("Fire2"));
+
             if (Mathf.Abs(rig.velocity.x) < 15) {
-                rig.velocity = new Vector2(-Mathf.Sign(transform.localScale.x) * 40, rig.velocity.y);
+                rig.velocity = new Vector2(-Mathf.Sign(transform.localScale.x) * 40 * dodgeDir, rig.velocity.y);
             } else {
-                rig.velocity = new Vector2(-Mathf.Sign(transform.localScale.x) * 50, rig.velocity.y);
+                rig.velocity = new Vector2(-Mathf.Sign(transform.localScale.x) * 50 * dodgeDir, rig.velocity.y);
             }
         }
 
@@ -120,6 +127,19 @@ public class SamuraiController : MonoBehaviour {
 
     }
 
+    public void downwardDive() {
+        rig.velocity = Vector2.zero;
+    }
+
+    public void endAnimator(string param) {
+        animator.SetBool(param, false);
+    }
+    public GameObject downwardDust;
+    public void createField() {
+        //Instantiate(downwardDust, GameObject.FindGameObjectWithTag("sword").GetComponent<Transform>().position, Quaternion.identity);
+        Instantiate(downwardDust, transform.position + (Vector3.down * 2), Quaternion.identity);
+        StartCoroutine(cam.shakeScreen(0.4f));
+    }
     void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.tag == "gate") {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);

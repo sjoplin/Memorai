@@ -10,6 +10,7 @@ public class Spawner : MonoBehaviour {
     public GameObject[] spawner;
     public int maxSpawnPerWave;
     public UnityEvent finishEvent;
+    public UnityEvent startEvent;
 
     ArrayList curList = new ArrayList();
 
@@ -19,6 +20,9 @@ public class Spawner : MonoBehaviour {
 
     public void spawn() {
         int waveCounter = 0;
+        if (spawnCounter == 0) {
+            startEvent.Invoke();
+        }
         while (waveCounter < maxSpawnPerWave) {
             if (spawnCounter < spawner.Length) {
                 GameObject spawn = spawner[spawnCounter];
@@ -43,6 +47,10 @@ public class Spawner : MonoBehaviour {
             finishEvent.Invoke();
             finished = true;
         }
+    }
+
+    public ArrayList getCurArray() {
+        return curList;
     }
 
   

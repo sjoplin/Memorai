@@ -734,17 +734,17 @@ Prefab:
     - target: {fileID: 224629300590135832, guid: 0e8c55264efb54647addcea87e73a8bf,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 0.00000011921
       objectReference: {fileID: 0}
     - target: {fileID: 224629300590135832, guid: 0e8c55264efb54647addcea87e73a8bf,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 860.16
+      value: 907
       objectReference: {fileID: 0}
     - target: {fileID: 224629300590135832, guid: 0e8c55264efb54647addcea87e73a8bf,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 350
+      value: 379
       objectReference: {fileID: 0}
     - target: {fileID: 224629300590135832, guid: 0e8c55264efb54647addcea87e73a8bf,
         type: 2}
@@ -779,6 +779,10 @@ Prefab:
     - target: {fileID: 1557164157523484, guid: 0e8c55264efb54647addcea87e73a8bf, type: 2}
       propertyPath: m_Name
       value: Image
+      objectReference: {fileID: 0}
+    - target: {fileID: 1557164157523484, guid: 0e8c55264efb54647addcea87e73a8bf, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0e8c55264efb54647addcea87e73a8bf, type: 2}
@@ -1748,6 +1752,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shakeStr: 0.15
+  followX: 0
+  followY: 0
+  cameraDamping: 1
 --- !u!114 &1318893190
 MonoBehaviour:
   m_ObjectHideFlags: 0

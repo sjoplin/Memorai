@@ -6,12 +6,14 @@ public class EvilCloudFunctions : MonoBehaviour {
     public GameObject[] topLayerClouds;
     public GameObject[] bottomLayerClouds;
     public GameObject lightning;
+    CameraFuncs cam;
     Animator animator;
 
     bool sparking = false;
 	// Use this for initialization
 	void Start () {
         animator = GetComponent<Animator>();
+        cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFuncs>();
 	}
 	
 	//REMOVE ON FINAL BUILD! ONLY USED FOR DEBUG!
@@ -41,6 +43,8 @@ public class EvilCloudFunctions : MonoBehaviour {
                 for (int y = 0; y < 5; y++) {
                     Instantiate(lightning, new Vector3(bottomLayerClouds[r - 1].transform.position.x - 5 + (3 * y), bottomLayerClouds[r - 1].transform.position.y), Quaternion.identity);
                     yield return new WaitForSeconds(0.1f);
+                    StartCoroutine(cam.shakeScreen(0.3f));
+                    
                 }
                 //yield return new WaitForSeconds(0.5f);
                 animator.SetLayerWeight(r, 0);
@@ -54,7 +58,7 @@ public class EvilCloudFunctions : MonoBehaviour {
     //Sparks everything at once;
     IEnumerator sparkSimul() {
         sparking = true;
-        int choices = Random.Range(1, 7);
+        int choices = Random.Range(1, 8);
         int r = 1;
         ArrayList rx = new ArrayList();
         for (int i = 1; i < 4; i++) {
@@ -69,8 +73,9 @@ public class EvilCloudFunctions : MonoBehaviour {
         for (int y = 0; y < 5; y++) {
             foreach (int cloud in rx) {
                 Instantiate(lightning, new Vector3(bottomLayerClouds[cloud - 1].transform.position.x - 5 + (3 * y), bottomLayerClouds[cloud - 1].transform.position.y), Quaternion.identity);
-            }
+            }          
         }
+        StartCoroutine(cam.shakeScreen(1f));
         yield return new WaitForSeconds(0.2f);
         animator.SetLayerWeight(1, 0);
         animator.SetLayerWeight(2, 0);

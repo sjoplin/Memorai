@@ -10,6 +10,7 @@ public class MageBehaviour : MonoBehaviour {
     [Range(1, 1000)]
     public int attackProb = 100;
     GameObject player;
+    public bool accurateShot = false;
 
     GameObject cloud;
 	// Use this for initialization
@@ -35,6 +36,12 @@ public class MageBehaviour : MonoBehaviour {
 	}
 
     public void death() {
+        Spawner spawner = GameObject.FindGameObjectWithTag("spawner").GetComponent<Spawner>();
+        CameraFuncs camfuncs = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFuncs>();
+        if (spawner != null && camfuncs != null && spawner.getCurArray().Count == 1 && (object) spawner.getCurArray()[spawner.getCurArray().Count - 1] == gameObject) {
+            camfuncs.startSlowMo();
+        }
+
         if (!animator.GetBool("Death")) {
             animator.SetBool("Death", true);
             rig.constraints = RigidbodyConstraints2D.None;
@@ -53,8 +60,13 @@ public class MageBehaviour : MonoBehaviour {
     IEnumerator attack() {
         animator.SetBool("Attack", true);
         rig.velocity = new Vector2(70 * Mathf.Sign(Random.Range(-2,2)), Random.Range(-5, 5));
+        Vector3 guessedVelPos = player.transform.position + (new Vector3(player.GetComponent<Rigidbody2D>().velocity.x, player.GetComponent<Rigidbody2D>().velocity.y, 0) * 0.8f);
         yield return new WaitForSeconds(0.2f);
-        cloud = Instantiate(lightningBlast, new Vector2(player.transform.position.x + Random.Range(-3,3), 14), Quaternion.identity);
+        if (accurateShot) {
+            cloud = Instantiate(lightningBlast, new Vector2(player.transform.position.x + Random.Range(-3, 3), 14), Quaternion.identity);
+        } else {
+            cloud = Instantiate(lightningBlast, new Vector2(guessedVelPos.x, 14), Quaternion.identity);
+        }
     }
 
     IEnumerator destroyOnTime() {

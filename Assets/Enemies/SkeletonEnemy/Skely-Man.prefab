@@ -1160,7 +1160,7 @@ MonoBehaviour:
   skeletonParts: {fileID: 1502510021170300, guid: e784ad23c55ec5349ab0c8c60ce11691,
     type: 2}
   headPosition: {fileID: 4098535549598648}
-  attackProb: 200
+  attackProb: 105
   state: -1
 --- !u!114 &114940128495775390
 MonoBehaviour:

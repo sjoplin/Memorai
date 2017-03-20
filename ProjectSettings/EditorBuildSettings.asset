@@ -10,6 +10,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EnemyAtlas.unity
   - enabled: 1
+    path: Assets/Scenes/Lead-In.unity
+  - enabled: 1
     path: Assets/Scenes/HubScene.unity
   - enabled: 1
     path: Assets/Scenes/samuraiDude.unity

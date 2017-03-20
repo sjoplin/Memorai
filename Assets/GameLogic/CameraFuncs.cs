@@ -1,16 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CameraFuncs : MonoBehaviour {
     bool shaking = false;
     public float shakeStr = 0.5f;
     Vector3 origPos;
+
+    public bool followX = false;
+    public bool followY = false;
+    Transform target;
+
+    [Range(0, 1)]
+    public float cameraDamping = 1f;
+
 	// Use this for initialization
 	void Start () {
         origPos = transform.position;
+        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
 	}
-	
+
     public bool getShaking() {
         return shaking;
     }
@@ -19,7 +29,18 @@ public class CameraFuncs : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.F1)) {
             print(Screen.width + " , " + Screen.height);
         }
-	}
+
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            Application.Quit();
+        }
+
+        if (followX) {
+            transform.position = Vector3.Slerp(transform.position, new Vector3(target.position.x, transform.position.y, transform.position.z), cameraDamping);
+        }
+        if (followY) {
+            transform.position = Vector3.Slerp(transform.position, new Vector3(transform.position.x, target.position.y, transform.position.z), cameraDamping);
+        }
+    }
     public void shakeOnce() {
         transform.position = new Vector3(Random.Range(origPos.x - shakeStr, origPos.x + shakeStr),
                 Random.Range(origPos.y - shakeStr, origPos.y + shakeStr),
@@ -44,7 +65,7 @@ public class CameraFuncs : MonoBehaviour {
         shaking = false;
     }
 
-    public IEnumerator shakeScreen(int customShake) {
+    public IEnumerator shakeScreen(float customShake) {
         shaking = true;
         Vector3 origPos = transform.position;
         float deltaT = 0;
@@ -58,4 +79,47 @@ public class CameraFuncs : MonoBehaviour {
         transform.position = origPos;
         shaking = false;
     }
+
+    bool inSlowMo = false;
+    IEnumerator slowMo(float seconds) {
+        if (!inSlowMo) {
+            inSlowMo = true;
+            Time.timeScale = 0.3f;
+            yield return new WaitForSeconds(seconds);
+            Time.timeScale = 1;
+            inSlowMo = false;
+        }
+    }
+
+    public void startSlowMo() {
+        //StartCoroutine(slowMo(0.65f));
+    }
+
+    public void stopFollow() {
+        followX = false;
+        followY = false;
+    }
+
+    public void loadNextScene() {
+        StartCoroutine(loadScene());
+    }
+
+    public void loadNextScene(int sceneNum) {
+        StartCoroutine(loadScene(sceneNum));
+    }
+
+    IEnumerator loadScene() {
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    IEnumerator loadScene(int sceneNum) {
+        yield return new WaitForSeconds(waitTime);
+        SceneManager.LoadScene(sceneNum);
+    }
+    float waitTime = 3;
+    public void setWaitTime(float val) {
+        waitTime = val;
+    }
+
 }
