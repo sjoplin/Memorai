@@ -39,6 +39,7 @@ public class SlowEnemyBehavior : MonoBehaviour {
     bool stunRot = false;
 	void Update () {
 		distX = player.transform.position.x - transform.position.x;
+		float distY = player.transform.position.y - transform.position.y;
         int dir = 0;
         if (distX < 0) dir = 1;
 
@@ -71,7 +72,7 @@ public class SlowEnemyBehavior : MonoBehaviour {
             }
             transform.rotation = Quaternion.Euler(new Vector3(0, ver, 0));
         }
-		if (Mathf.Abs (distX) < 1.4f && player.transform.position.y < 2f) {
+		if (Mathf.Abs (distX) < 1.4f && distY < 2f) {
 			stun = 3f;
 		}
         animator.SetBool("Moving", Mathf.Abs(rig.velocity.x) > 0.2f);

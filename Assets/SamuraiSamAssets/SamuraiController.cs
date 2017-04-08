@@ -76,11 +76,12 @@ public class SamuraiController : MonoBehaviour {
 		// turns ivert off after 5 seconds
 		if (invert == true) {
 			counter += Time.deltaTime;
-			if (counter >= 3) {
+			if (counter >= 5) {
 				counter = 0;
 				invert = false;
 			}
 		}
+
 
 		//Checks for hitting the ground
 		RaycastHit2D groundHit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + ((-col.bounds.size.y / 2) - 0.1f)), Vector2.down, 0.01f);
@@ -117,6 +118,11 @@ public class SamuraiController : MonoBehaviour {
 
 		//Handles Movement
 		float axis = Input.GetAxis("Horizontal");
+
+		if (invert) {
+			axis = -axis;
+		}
+
 		if (axis < 0 && !runningStop && !dead) {
 			if (rig.velocity.x > -maxRunSpeed && !animator.GetBool("Hurt") && (!leftHit || leftHit.collider.gameObject.tag == "enemy") ) {
 				rig.velocity = new Vector2(rig.velocity.x - runAccel, rig.velocity.y);
