@@ -1156,11 +1156,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca0ee86ce67273442a97153401e1a768, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 20
   skeletonParts: {fileID: 1502510021170300, guid: e784ad23c55ec5349ab0c8c60ce11691,
     type: 2}
   headPosition: {fileID: 4098535549598648}
-  attackProb: 200
+  attackProb: 230
   state: -1
 --- !u!114 &114940128495775390
 MonoBehaviour:
@@ -1174,6 +1174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   knockback: 1
+  verticalKnockback: 0
   isVunerable: 1
   impactEffect: {fileID: 1409471950074602, guid: eecc40442ccba81428f92830fc7e82d0,
     type: 2}
@@ -1193,6 +1194,8 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  memOrbs: {fileID: 0}
+  produceOrbs: 0
 --- !u!114 &114957774307618834
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -11,6 +11,7 @@ public class FinalBossBehaviour : MonoBehaviour {
     public float restTime = 10.0f;
 
     public GameObject lightning;
+    public GameObject[] possibleSpawn;
 
 	void Start () {
         animator = gameObject.GetComponent<Animator>();
@@ -21,14 +22,16 @@ public class FinalBossBehaviour : MonoBehaviour {
     
 	void Update () {
         openingCameraShake();    
-        if (Input.GetKeyDown(KeyCode.L)) {
-            Instantiate(lightning, new Vector3(0, 16, 0), Quaternion.identity);
+        if (health < 20) {
+            attackProbability = 10;
         }
         if (!animator.GetBool("Vunerable") && !animator.GetBool("Awakening") && !animator.GetBool("Death") && Random.Range(0, attackProbability) == 0) {
-            if (health > 20) {
+            if (health > 30) {
                 clouds.startSparks();
+                spawnEnemies();
             } else {
                 clouds.startSimulSparks();
+                spawnEnemies();
             }
             StartCoroutine(cooldown());
         }
@@ -66,6 +69,15 @@ public class FinalBossBehaviour : MonoBehaviour {
     void death() {
         animator.SetBool("Death", true);
         cam.shakeOnce();
+    }
+
+    void spawnEnemies() {
+        GameObject[] cur = GameObject.FindGameObjectsWithTag("enemy");
+        if (cur.Length <= 6) {
+            if (Random.Range(0, 3) == 1) {
+                Instantiate(possibleSpawn[Random.Range(0, possibleSpawn.Length - 1)], transform.position, Quaternion.identity);
+            }
+        }
     }
 
     IEnumerator cooldown() {

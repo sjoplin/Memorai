@@ -57,7 +57,7 @@ public class SkelyManBehaviour : MonoBehaviour {
             attackMode();
         }
 
-        if (Random.Range(attackProb, 0) == 50) {
+        if (Random.Range(attackProb, 0) == 1) {
             state = 1;
         }
 
@@ -99,6 +99,14 @@ public class SkelyManBehaviour : MonoBehaviour {
         state = 0;
     }
     void death() {
+        try {
+            Spawner spawner = GameObject.FindGameObjectWithTag("spawner").GetComponent<Spawner>();
+            CameraFuncs camfuncs = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFuncs>();
+            if (spawner != null && camfuncs != null && spawner.getCurArray().Count == 1 && (object)spawner.getCurArray()[spawner.getCurArray().Count - 1] == gameObject) {
+                camfuncs.startSlowMo();
+            }
+        } catch { }
+
         state = 3;
         animator.SetBool("Death", true);
         GameObject parts = Instantiate(skeletonParts, transform.position, Quaternion.identity);

@@ -21,7 +21,7 @@ public class TestModeManager : MonoBehaviour {
     }
 
     public void create() {
-        Instantiate(enemies[index], new Vector2(0, 8), Quaternion.identity);
+        Instantiate(enemies[index], new Vector2(0, 5), Quaternion.identity);
     }
 
 }

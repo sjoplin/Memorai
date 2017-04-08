@@ -2,18 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.Events;
 public class FadeOut : MonoBehaviour {
     public float delayTime = 3;
     public float fadeTime = 0.01f;
     public bool fadeIn = true;
     public bool fadeOut = true;
 
+    public bool destroyOnEnd = true;
+    public UnityEvent finishedEvent;
+
     // Use this for initialization
 
     public bool triggerSpawn = false;
 
-	void Start () {
+	void Awake () {
         StartCoroutine(fadeInFadeOut());
 	}
 	
@@ -21,6 +24,18 @@ public class FadeOut : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    public void fade() {
+        StartCoroutine(fadeInFadeOut());
+    }
+
+    public void setFadeout(bool val) {
+        fadeOut = val;
+    }
+
+    public void setFadeIn(bool val) {
+        fadeIn = val;
+    }
 
     IEnumerator fadeInFadeOut() {
         //Fade in;
@@ -46,7 +61,12 @@ public class FadeOut : MonoBehaviour {
             if (triggerSpawn == true) {
                 GameObject.FindGameObjectWithTag("spawner").GetComponent<Spawner>().spawn();
             }
-            Destroy(gameObject);
+            if (destroyOnEnd) {
+                Destroy(gameObject);
+            } else {
+                gameObject.SetActive(false);
+            }
         }
+        finishedEvent.Invoke();
     }
 }

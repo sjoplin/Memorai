@@ -20,8 +20,13 @@ public class TitleScreenHandler : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         idleColor = option1.color;
+        StartCoroutine(goBackToIntro());
 	}
 	
+    IEnumerator goBackToIntro() {
+        yield return new WaitForSeconds(25);
+        SceneManager.LoadScene(0);
+    }
 	// Update is called once per frame
 	void Update () {
         if (selectedState != -1) {
@@ -33,6 +38,7 @@ public class TitleScreenHandler : MonoBehaviour {
                 selectedState = 2;
             }
         }
+
 
         if (selectedState == 1) {
             option1.color = selectedColor;

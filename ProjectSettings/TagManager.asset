@@ -12,6 +12,7 @@ TagManager:
   - spawner
   - speech
   - gate
+  - pauseMenu
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - 
   - Enemy
   - Player
-  - 
+  - OnlyEnemy
   - 
   - 
   - 

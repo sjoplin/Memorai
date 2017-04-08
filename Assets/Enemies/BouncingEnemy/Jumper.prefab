@@ -180,7 +180,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1136543137668076}
-  m_LocalRotation: {x: 0, y: 0, z: -0.080765, w: 0.99673325}
+  m_LocalRotation: {x: 0, y: 0, z: -0.08076433, w: 0.99673325}
   m_LocalPosition: {x: 1.0000002, y: -0.0000000027066562, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -210,7 +210,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1818346255463214}
-  m_LocalRotation: {x: 0, y: 0, z: -0.87435305, w: 0.48529047}
+  m_LocalRotation: {x: 0, y: 0, z: -0.8743531, w: 0.48529026}
   m_LocalPosition: {x: 0.87055814, y: -0.44397527, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -236,7 +236,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1925208875732354}
-  m_LocalRotation: {x: 0, y: 0, z: 0.10115532, w: 0.99487066}
+  m_LocalRotation: {x: 0, y: 0, z: 0.10115182, w: 0.994871}
   m_LocalPosition: {x: 0.72263986, y: 0.69284797, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -251,7 +251,7 @@ Transform:
   m_GameObject: {fileID: 1401499392957650}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 0.98750013, z: 1}
   m_Children:
   - {fileID: 4158169944358220}
   m_Father: {fileID: 4158095534320900}
@@ -283,7 +283,7 @@ CircleCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1401499392957650}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -347,7 +347,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   knockback: 1
-  isVunerable: 1
+  verticalKnockback: 0
+  isVunerable: 0
   impactEffect: {fileID: 1409471950074602, guid: eecc40442ccba81428f92830fc7e82d0,
     type: 2}
   hurtEvent:
@@ -366,6 +367,8 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  memOrbs: {fileID: 0}
+  produceOrbs: 0
 --- !u!114 &114200013158710550
 MonoBehaviour:
   m_ObjectHideFlags: 1

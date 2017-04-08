@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour {
     public bool orig = false;
     int score = 0;
     int prevScore = 0;
-
+    public int lives = 3;
     int multiplier = 1;
     string curLevel = "";
     Text scoreText;
@@ -75,8 +75,20 @@ public class GameManager : MonoBehaviour {
         if (resetting == false) {
             resetting = true;
             yield return new WaitForSeconds(waitTime);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            loseLives();
+            if (lives <= 0) {
+                SceneManager.LoadScene(PlayerPrefs.GetInt("Checkpoint"));
+                lives = 3;
+            } else {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
             resetting = false;
+        }
+    }
+
+    public void loseLives() {
+        if (SceneManager.GetActiveScene().name != "EnemyTestingArena") {
+            lives -= 1;
         }
     }
 }

@@ -21,9 +21,10 @@ GameObject:
   - component: {fileID: 4386354841896744}
   - component: {fileID: 212084006892640376}
   - component: {fileID: 95016249776199708}
+  - component: {fileID: 61561473078911812}
   m_Layer: 0
   m_Name: LightningBolt
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -187,6 +188,20 @@ CircleCollider2D:
   m_Offset: {x: -0.0000019073486, y: 0.00000023841841}
   serializedVersion: 2
   m_Radius: 2
+--- !u!61 &61561473078911812
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1115185977823572}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0.000030517578}
+  serializedVersion: 2
+  m_Size: {x: 1.07, y: 5.8799996}
 --- !u!95 &95016249776199708
 Animator:
   serializedVersion: 3
