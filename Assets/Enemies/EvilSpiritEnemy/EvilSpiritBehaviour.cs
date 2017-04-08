@@ -60,7 +60,6 @@ public class EvilSpiritBehaviour : MonoBehaviour {
 	}
 
     void dodge() {
-        print(Vector3.Distance(player.transform.position, transform.position));
         if (Vector3.Distance(player.transform.position, transform.position) < 8) {
             if (Random.Range(1, 3) == 1) {
                 animator.SetTrigger("idle");

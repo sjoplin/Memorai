@@ -866,6 +866,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   knockback: 1
+  verticalKnockback: 0
   isVunerable: 1
   impactEffect: {fileID: 1409471950074602, guid: eecc40442ccba81428f92830fc7e82d0,
     type: 2}
@@ -885,6 +886,8 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  memOrbs: {fileID: 0}
+  produceOrbs: 0
 --- !u!61 &494403702
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1059,6 +1062,116 @@ MonoBehaviour:
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 0}
   m_AttachedIK: {fileID: 0}
+--- !u!1001 &607492292
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2014726187}
+    m_Modifications:
+    - target: {fileID: 224252022808633368, guid: 77bf9e75f577b9540b97e62b725f80c6,
+        type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224252022808633368, guid: 77bf9e75f577b9540b97e62b725f80c6,
+        type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224252022808633368, guid: 77bf9e75f577b9540b97e62b725f80c6,
+        type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224252022808633368, guid: 77bf9e75f577b9540b97e62b725f80c6,
+        type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224252022808633368, guid: 77bf9e75f577b9540b97e62b725f80c6,
+        type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224252022808633368, guid: 77bf9e75f577b9540b97e62b725f80c6,
+        type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224252022808633368, guid: 77bf9e75f577b9540b97e62b725f80c6,
+        type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224252022808633368, guid: 77bf9e75f577b9540b97e62b725f80c6,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 224252022808633368, guid: 77bf9e75f577b9540b97e62b725f80c6,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224252022808633368, guid: 77bf9e75f577b9540b97e62b725f80c6,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224252022808633368, guid: 77bf9e75f577b9540b97e62b725f80c6,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 224252022808633368, guid: 77bf9e75f577b9540b97e62b725f80c6,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 224252022808633368, guid: 77bf9e75f577b9540b97e62b725f80c6,
+        type: 2}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224252022808633368, guid: 77bf9e75f577b9540b97e62b725f80c6,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224252022808633368, guid: 77bf9e75f577b9540b97e62b725f80c6,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224252022808633368, guid: 77bf9e75f577b9540b97e62b725f80c6,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224252022808633368, guid: 77bf9e75f577b9540b97e62b725f80c6,
+        type: 2}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224252022808633368, guid: 77bf9e75f577b9540b97e62b725f80c6,
+        type: 2}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224795754144457264, guid: 77bf9e75f577b9540b97e62b725f80c6,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224103000975732830, guid: 77bf9e75f577b9540b97e62b725f80c6,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 77bf9e75f577b9540b97e62b725f80c6, type: 2}
+  m_IsPrefabParent: 0
 --- !u!114 &747874766 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114067652415556174, guid: 30fab01654353b64a9e984c053c71fcf,
@@ -1686,6 +1799,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   knockback: 1
+  verticalKnockback: 0
   isVunerable: 1
   impactEffect: {fileID: 1409471950074602, guid: eecc40442ccba81428f92830fc7e82d0,
     type: 2}
@@ -1760,6 +1874,8 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  memOrbs: {fileID: 0}
+  produceOrbs: 0
 --- !u!114 &1065343378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1772,6 +1888,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waitTime: 2.5
+--- !u!224 &1177148127 stripped
+RectTransform:
+  m_PrefabParentObject: {fileID: 224252022808633368, guid: 77bf9e75f577b9540b97e62b725f80c6,
+    type: 2}
+  m_PrefabInternal: {fileID: 607492292}
 --- !u!1001 &1225091037
 Prefab:
   m_ObjectHideFlags: 0
@@ -2037,7 +2158,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 4
+          m_IntArgument: 5
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
@@ -5611,6 +5732,7 @@ RectTransform:
   - {fileID: 1801181611}
   - {fileID: 1401433966}
   - {fileID: 403368732}
+  - {fileID: 1177148127}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

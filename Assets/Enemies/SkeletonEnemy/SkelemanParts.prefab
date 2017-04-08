@@ -68,6 +68,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4188334669309912}
   - component: {fileID: 50255130155166894}
+  - component: {fileID: 114663156790527388}
   m_Layer: 0
   m_Name: SkelemanParts
   m_TagString: Untagged
@@ -533,7 +534,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e211cedb5dafcf4419a97de15d8e8ec2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitTime: 2
+  waitTime: 1
 --- !u!114 &114293700873453290
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -572,7 +573,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e211cedb5dafcf4419a97de15d8e8ec2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitTime: 2
+  waitTime: 1
+--- !u!114 &114663156790527388
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1502510021170300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e211cedb5dafcf4419a97de15d8e8ec2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waitTime: 1.2
 --- !u!114 &114680070481562048
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -685,7 +698,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e211cedb5dafcf4419a97de15d8e8ec2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitTime: 2
+  waitTime: 1
 --- !u!114 &114973607233598966
 MonoBehaviour:
   m_ObjectHideFlags: 1

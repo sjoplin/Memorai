@@ -54,7 +54,7 @@ public class BouncyEnemyBehaviour : MonoBehaviour {
         } catch { }
 
         rig.velocity = new Vector2(0, rig.velocity.y);
-        rig.gravityScale = 9.81f;
+        rig.gravityScale = 5f;
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
         rig.constraints = RigidbodyConstraints2D.FreezeRotation;
         animator.SetBool("Death", true);

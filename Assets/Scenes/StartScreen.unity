@@ -1771,7 +1771,7 @@ MonoBehaviour:
   option3: {fileID: 1149237205}
   selectedColor: {r: 1, g: 0, b: 0, a: 1}
   idleColor: {r: 1, g: 1, b: 1, a: 0}
-  storyLevelNum: 2
+  storyLevelNum: 3
   atlasLevelNum: 1
   creditsLevelNum: 0
   transitionEvent:

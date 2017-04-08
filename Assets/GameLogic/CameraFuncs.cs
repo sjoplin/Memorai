@@ -19,7 +19,14 @@ public class CameraFuncs : MonoBehaviour {
 	void Start () {
         origPos = transform.position;
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-	}
+        
+        //Maintains the Camera aspect ratio to ensure everything is in the same place
+        //When running on different computers of different screen sizes.
+        Camera cam = GetComponent<Camera>();
+        //Screen.SetResolution(1280, 549, false);
+        float screenRatio = cam.orthographicSize / (1280f / 549f);
+        cam.orthographicSize = screenRatio * (cam.pixelHeight / cam.pixelWidth);
+    }
 
     public bool getShaking() {
         return shaking;
@@ -40,6 +47,10 @@ public class CameraFuncs : MonoBehaviour {
         if (followY) {
             transform.position = Vector3.Slerp(transform.position, new Vector3(transform.position.x, target.position.y, transform.position.z), cameraDamping);
         }
+    }
+
+    public void shake(float shakeWeight, float time) {
+        StartCoroutine(shakeScreen(shakeWeight, time));
     }
     public void shakeOnce() {
         transform.position = new Vector3(Random.Range(origPos.x - shakeStr, origPos.x + shakeStr),
@@ -74,6 +85,21 @@ public class CameraFuncs : MonoBehaviour {
                 Random.Range(origPos.y - customShake, origPos.y + customShake),
                 transform.position.z);
             yield return new WaitForSeconds(0.03f);
+            deltaT += Time.deltaTime;
+        }
+        transform.position = origPos;
+        shaking = false;
+    }
+
+    public IEnumerator shakeScreen(float customShake, float wait) {
+        shaking = true;
+        Vector3 origPos = transform.position;
+        float deltaT = 0;
+        while (deltaT < 0.05f) {
+            transform.position = new Vector3(Random.Range(origPos.x - customShake, origPos.x + customShake),
+                Random.Range(origPos.y - customShake, origPos.y + customShake),
+                transform.position.z);
+            yield return new WaitForSeconds(wait);
             deltaT += Time.deltaTime;
         }
         transform.position = origPos;

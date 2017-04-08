@@ -22,6 +22,11 @@ public class MageBehaviour : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (GameObject.FindObjectsOfType<MageBehaviour>().Length == 1) {
+            accurateShot = true;
+        } else {
+            accurateShot = false;
+        }
         float distX = player.transform.position.x - transform.position.x;
         if (distX < -0.5 && transform.rotation.eulerAngles.y != 0) {
             //transform.rotation = Quaternion.Euler(0, 0, 0);
@@ -36,7 +41,8 @@ public class MageBehaviour : MonoBehaviour {
 	}
 
     public void death() {
-        Spawner spawner = GameObject.FindGameObjectWithTag("spawner").GetComponent<Spawner>();
+        Spawner spawner = null;
+        try {spawner = GameObject.FindGameObjectWithTag("spawner").GetComponent<Spawner>();} catch {}
         CameraFuncs camfuncs = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFuncs>();
         if (spawner != null && camfuncs != null && spawner.getCurArray().Count == 1 && (object) spawner.getCurArray()[spawner.getCurArray().Count - 1] == gameObject) {
             camfuncs.startSlowMo();

@@ -9,6 +9,11 @@ public class spiritBallProjectile : MonoBehaviour {
     public int rot = 0;
 	// Use this for initialization
 	void Start () {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        foreach (Collider2D col in GetComponents<Collider2D>()) {
+            Physics2D.IgnoreCollision(GameObject.FindGameObjectWithTag("Player").GetComponent<Collider2D>(), col);
+        }
+
         rig = GetComponent<Rigidbody2D>();
         rot = Random.Range(0, 2);
         if (rot == 0) {

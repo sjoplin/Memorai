@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.Events;
 public class FadeOut : MonoBehaviour {
     public float delayTime = 3;
     public float fadeTime = 0.01f;
@@ -10,6 +10,7 @@ public class FadeOut : MonoBehaviour {
     public bool fadeOut = true;
 
     public bool destroyOnEnd = true;
+    public UnityEvent finishedEvent;
 
     // Use this for initialization
 
@@ -66,5 +67,6 @@ public class FadeOut : MonoBehaviour {
                 gameObject.SetActive(false);
             }
         }
+        finishedEvent.Invoke();
     }
 }

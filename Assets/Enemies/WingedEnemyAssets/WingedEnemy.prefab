@@ -525,6 +525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   knockback: 1
+  verticalKnockback: 0
   isVunerable: 1
   impactEffect: {fileID: 1409471950074602, guid: eecc40442ccba81428f92830fc7e82d0,
     type: 2}
@@ -544,6 +545,8 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  memOrbs: {fileID: 0}
+  produceOrbs: 0
 --- !u!114 &114231233714685740
 MonoBehaviour:
   m_ObjectHideFlags: 1

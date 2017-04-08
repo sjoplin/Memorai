@@ -71,6 +71,7 @@ public class BadGuyBehaviour : MonoBehaviour {
         if (state == 2 && animator.GetBool("Hurt")) {
             animator.SetBool("Hurt", false);
         }
+			
 	}
 
     /*
@@ -115,7 +116,7 @@ public class BadGuyBehaviour : MonoBehaviour {
         if (relVel.x > 0.01) {
             transform.localScale = new Vector2(-Mathf.Abs(transform.localScale.x), transform.localScale.y);
         }
-        if (!animator.GetBool("Hurt") && !animator.GetBool("Death")) {
+        if (!animator.GetBool("Hurt") && !animator.GetBool("Death") && Time.timeScale != 0) {
             //transform.position = Vector2.MoveTowards(transform.position, attackTarget, 0.2f);
             transform.position = Vector2.SmoothDamp(transform.position, attackTarget, ref relVel, 2, 3, 0.1f);
         }
@@ -140,8 +141,6 @@ public class BadGuyBehaviour : MonoBehaviour {
             GameManager manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
             health -= 10;
             endAttackMode();
-            manager.addScore(10);
-            manager.addMult();
         }
     }
 
