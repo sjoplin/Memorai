@@ -1610,7 +1610,7 @@ MonoBehaviour:
   - {fileID: 1542932475159294, guid: c74f97e0d215fd447a329831d89c89e5, type: 2}
   - {fileID: 1950122681202830, guid: d632b5b5bdf6b42149874564d3074290, type: 2}
   - {fileID: 1950122681202830, guid: d632b5b5bdf6b42149874564d3074290, type: 2}
-  maxSpawnPerWave: 8
+  maxSpawnPerWave: 6
   finishEvent:
     m_PersistentCalls:
       m_Calls:
