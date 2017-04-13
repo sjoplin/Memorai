@@ -1428,7 +1428,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 827b8f8a0de222e45960cc624ffd1b44, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1751,6 +1751,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bbb1c6b9c5ccfe4baa9627fe817bd10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shaking: 0
   shakeStr: 0.15
   followX: 0
   followY: 0
@@ -1772,7 +1773,7 @@ MonoBehaviour:
   selectedColor: {r: 1, g: 0, b: 0, a: 1}
   idleColor: {r: 1, g: 1, b: 1, a: 0}
   storyLevelNum: 3
-  atlasLevelNum: 1
+  atlasLevelNum: 2
   creditsLevelNum: 0
   transitionEvent:
     m_PersistentCalls:
