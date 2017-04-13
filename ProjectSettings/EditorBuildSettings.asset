@@ -40,4 +40,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Stage 3 Roof.unity
   - enabled: 1
+    path: Assets/Scenes/WalkToBoss1.unity
+  - enabled: 1
+    path: Assets/Scenes/WalkToBoss2.unity
+  - enabled: 1
     path: Assets/Scenes/finalBossScene.unity

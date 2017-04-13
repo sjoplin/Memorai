@@ -45,14 +45,6 @@ public class BouncyEnemyBehaviour : MonoBehaviour {
     }
 
     public void death() {
-        try {
-            Spawner spawner = GameObject.FindGameObjectWithTag("spawner").GetComponent<Spawner>();
-            CameraFuncs camfuncs = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFuncs>();
-            if (spawner != null && camfuncs != null && spawner.getCurArray().Count == 1 && (object)spawner.getCurArray()[spawner.getCurArray().Count - 1] == gameObject) {
-                camfuncs.startSlowMo();
-            }
-        } catch { }
-
         rig.velocity = new Vector2(0, rig.velocity.y);
         rig.gravityScale = 5f;
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));

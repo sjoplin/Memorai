@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class CameraFuncs : MonoBehaviour {
-    bool shaking = false;
+    public bool shaking = false;
     public float shakeStr = 0.5f;
     Vector3 origPos;
 

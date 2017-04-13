@@ -9,11 +9,12 @@ public class PauseMenu : MonoBehaviour {
 
     public Text memOrbStatText;
     public Text defeatedEnemiesText;
-    GameObject manager;
+    public GameObject manager;
 
     int volume;
     void OnEnable() {
         GameObject manager = GameObject.FindGameObjectWithTag("GameManager");
+        defeatedEnemiesText.text = "Lives Currently Left: " + manager.GetComponent<GameManager>().lives.ToString();
         if (manager != null) {
             memOrbStatText.text = "Memory Orbs Collected: " + manager.GetComponent<GameManager>().getScore()/10;
         } else {
@@ -36,8 +37,6 @@ public class PauseMenu : MonoBehaviour {
             gameObject.SetActive(false);
             Time.timeScale = 1;
         }
-
-
     }
 
     public void resume() {
