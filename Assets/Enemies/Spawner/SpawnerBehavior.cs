@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnerBehavior : MonoBehaviour {
-	private int health;
+	public int health;
 	private int maxHealth = 100;
 	public GameObject[] allEnemies;
 	public GameObject[] spawnPoints;
