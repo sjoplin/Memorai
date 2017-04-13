@@ -44,7 +44,7 @@ public class Spawner : MonoBehaviour {
 //					}
 //				}
 
-				if (Mathf.Abs (player.transform.position.x - spawnPoint.x) < 4) {
+				if (Mathf.Abs (player.transform.position.x - spawnPoint.x) < 10) {
 					spawnPoint = spawnPoints[spawnPoints.Length - 1 - spawnPointNumber].GetComponent<Transform>().position;
 				}
 
