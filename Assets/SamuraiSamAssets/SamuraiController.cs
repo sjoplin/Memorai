@@ -191,6 +191,7 @@ public class SamuraiController : MonoBehaviour {
 		a.AddComponent<AudioSource>();
 		AudioSource source = a.GetComponent<AudioSource>();
 		source.loop = false;
+        source.volume = 1f;
 		source.clip = clip;
 		a.AddComponent<DestroyOnTime>();
 		a.GetComponent<DestroyOnTime>().waitTime = clip.length + 0.01f;
