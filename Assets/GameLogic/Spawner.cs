@@ -11,12 +11,17 @@ public class Spawner : MonoBehaviour {
     public int maxSpawnPerWave;
     public UnityEvent finishEvent;
     public UnityEvent startEvent;
+	public GameObject player;
 
     ArrayList curList = new ArrayList();
 
     int spawnCounter = 0;
     bool triggered = false;
     bool finished = false;
+
+	void Start() {
+		player = GameObject.FindGameObjectWithTag("Player");
+	}
 
     public void spawn() {
         int waveCounter = 0;
@@ -27,7 +32,22 @@ public class Spawner : MonoBehaviour {
             if (spawnCounter < spawner.Length) {
                 GameObject spawn = spawner[spawnCounter];
                 spawnCounter += 1;
-                Vector3 spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length - 1)].GetComponent<Transform>().position;
+				int spawnPointNumber = Random.Range (0, spawnPoints.Length - 1); 
+				Vector3 spawnPoint = spawnPoints[spawnPointNumber].GetComponent<Transform>().position;
+				//this was brute force fix to enemies spawning. Works but not as effectively as the fix below. 
+				//Will keep in case other fix breaks.
+//				if (Mathf.Abs (player.transform.position.x - spawnPoint.x) < 4) {
+//					if (player.GetComponent<Rigidbody2D> ().velocity.x < 0) {
+//						spawnPoint = spawnPoint + new Vector3 (8, 0, 0);
+//					} else {
+//						spawnPoint = spawnPoint + new Vector3 (-8, 0, 0);
+//					}
+//				}
+
+				if (Mathf.Abs (player.transform.position.x - spawnPoint.x) < 4) {
+					spawnPoint = spawnPoints[spawnPoints.Length - 1 - spawnPointNumber].GetComponent<Transform>().position;
+				}
+
                 GameObject newEnemy = Instantiate(spawn, new Vector2(spawnPoint.x + Random.Range(-2,2), spawnPoint.y + Random.Range(-2,2)), Quaternion.identity);
                 curList.Add(newEnemy);
             }
