@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class FinalBossBehaviour : MonoBehaviour {
     CameraFuncs cam;
@@ -12,6 +14,8 @@ public class FinalBossBehaviour : MonoBehaviour {
 
     public GameObject lightning;
     public GameObject[] possibleSpawn;
+
+    public UnityEvent deathEvent;
 
 	void Start () {
         animator = gameObject.GetComponent<Animator>();
@@ -27,11 +31,11 @@ public class FinalBossBehaviour : MonoBehaviour {
         }
         if (!animator.GetBool("Vunerable") && !animator.GetBool("Awakening") && !animator.GetBool("Death") && Random.Range(0, attackProbability) == 0) {
             if (health > 30) {
+                spawnEnemies();
                 clouds.startSparks();
-                spawnEnemies();
             } else {
-                clouds.startSimulSparks();
                 spawnEnemies();
+                clouds.startSimulSparks();
             }
             StartCoroutine(cooldown());
         }
@@ -67,14 +71,32 @@ public class FinalBossBehaviour : MonoBehaviour {
     }
 
     void death() {
+        MageBehaviour[] cur = FindObjectsOfType<MageBehaviour>();
+        foreach (MageBehaviour mage in cur) {
+            mage.death();
+        }
         animator.SetBool("Death", true);
         cam.shakeOnce();
+        deathEvent.Invoke();
+    }
+
+    public void triggerSlowMo() {
+        if (Time.timeScale < 1) {
+            Time.timeScale = 1;
+        } else {
+            Time.timeScale = 0.5f;
+        }
+    }
+    public void returnDeathScale() {
+        Destroy(gameObject);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        
     }
 
     void spawnEnemies() {
-        GameObject[] cur = GameObject.FindGameObjectsWithTag("enemy");
-        if (cur.Length <= 6) {
-            if (Random.Range(0, 3) == 1) {
+        MageBehaviour[] mages = FindObjectsOfType<MageBehaviour>();
+        if (mages.Length < 3) {
+            if (Random.Range(0, 2) == 1) {
                 Instantiate(possibleSpawn[Random.Range(0, possibleSpawn.Length - 1)], transform.position, Quaternion.identity);
             }
         }
@@ -90,5 +112,7 @@ public class FinalBossBehaviour : MonoBehaviour {
             }
         }
     }
+
+
 
 }

@@ -1523,6 +1523,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orig: 0
+  lives: 0
 --- !u!4 &538334829
 Transform:
   m_ObjectHideFlags: 0
@@ -2432,9 +2433,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0.016462803, y: -2.138059}
+  m_Offset: {x: 0.051538944, y: -1.6234231}
   serializedVersion: 2
-  m_Size: {x: 0.47582355, y: 1.26282}
+  m_Size: {x: 1.7156377, y: 2.6195946}
 --- !u!4 &1298468715 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4998416304967964, guid: f7366ab7ec5a61645aabb181408e5bc9,
@@ -2612,6 +2613,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bbb1c6b9c5ccfe4baa9627fe817bd10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shaking: 0
   shakeStr: 0.15
   followX: 0
   followY: 0

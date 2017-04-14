@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnerBehavior : MonoBehaviour {
 	public int health;
-	private int maxHealth = 100;
+	private int maxHealth = 80;
 	public GameObject[] allEnemies;
 	public GameObject[] spawnPoints;
 	private float timer = 0;

@@ -410,7 +410,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
+          m_IntArgument: 23
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
@@ -1004,6 +1004,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orig: 0
+  lives: 0
 --- !u!4 &538334829
 Transform:
   m_ObjectHideFlags: 0
@@ -1303,7 +1304,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 850735273}
-  m_Text: TUTORIAL
+  m_Text: PRACTICE
   m_OffsetZ: 0
   m_CharacterSize: 2
   m_LineSpacing: 1
@@ -2391,6 +2392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bbb1c6b9c5ccfe4baa9627fe817bd10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shaking: 0
   shakeStr: 0.15
   followX: 0
   followY: 0

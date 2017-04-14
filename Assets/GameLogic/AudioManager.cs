@@ -9,7 +9,8 @@ public class AudioManager : MonoBehaviour {
     public float maxVol = 0.1f;
 	// Use this for initialization
 	void Start () {
-
+        AudioListener.volume = PlayerPrefs.GetFloat("Volume");
+        
 	}
 	
 	// Update is called once per frame

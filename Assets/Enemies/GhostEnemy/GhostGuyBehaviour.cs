@@ -93,8 +93,15 @@ public class GhostGuyBehaviour : MonoBehaviour {
 
 	public void Death() {
 		player.GetComponent<SamuraiController> ().Invert = false;
-		Destroy (this.gameObject);
+        Animator animator = GetComponent<Animator>();
+        Rigidbody2D rig = GetComponent<Rigidbody2D>();
+        rig.constraints = RigidbodyConstraints2D.None;
+        animator.SetBool("Death", true);
 	}
+
+    public void die() {
+        Destroy(gameObject);
+    }
 
     void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.tag == "Player") {

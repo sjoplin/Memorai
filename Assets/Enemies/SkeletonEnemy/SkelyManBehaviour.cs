@@ -132,4 +132,8 @@ public class SkelyManBehaviour : MonoBehaviour {
             GameObject.FindGameObjectWithTag("spawner").GetComponent<Spawner>().removeCurrent(gameObject);
         }
     }
+
+    public void die() {
+        Destroy(gameObject);
+    }
 }
