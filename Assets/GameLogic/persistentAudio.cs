@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class persistentAudio : MonoBehaviour {
 
-    void OnEnabled() {
+    void OnEnable() {
         StartCoroutine(waitForDestroy());
     }
 	// Use this for initialization

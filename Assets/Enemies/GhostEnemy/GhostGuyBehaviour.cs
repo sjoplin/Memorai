@@ -60,10 +60,7 @@ public class GhostGuyBehaviour : MonoBehaviour {
 //			rig.velocity = new Vector2 (0, rig.velocity.x / 10);
 //		}
 
-		float distY = player.transform.position.y - transform.position.y;
-        if (Mathf.Abs (distX) < 5 && Mathf.Abs (distY) < 5) {
-			player.GetComponent<SamuraiController> ().Invert = true;
-        } 
+
 			
 	}
 	float timeout = 0;
@@ -98,5 +95,18 @@ public class GhostGuyBehaviour : MonoBehaviour {
 		player.GetComponent<SamuraiController> ().Invert = false;
 		Destroy (this.gameObject);
 	}
+
+    void OnTriggerEnter2D(Collider2D other) {
+        if (other.gameObject.tag == "Player") {
+            Animator playerAnim = other.gameObject.GetComponent<Animator>();
+            if (playerAnim.GetBool("Hurt")) {
+                float distX = player.transform.position.x - transform.position.x;
+                float distY = player.transform.position.y - transform.position.y;
+                if (Mathf.Abs(distX) < 5 && Mathf.Abs(distY) < 5) {
+                    player.GetComponent<SamuraiController>().Invert = true;
+                }
+            }
+        }
+    }
 
 }

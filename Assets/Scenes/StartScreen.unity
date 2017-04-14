@@ -1774,7 +1774,7 @@ MonoBehaviour:
   idleColor: {r: 1, g: 1, b: 1, a: 0}
   storyLevelNum: 3
   atlasLevelNum: 2
-  creditsLevelNum: 0
+  creditsLevelNum: 21
   transitionEvent:
     m_PersistentCalls:
       m_Calls:
