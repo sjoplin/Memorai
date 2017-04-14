@@ -19,26 +19,14 @@ Platform assembly: C:\Users\buddy\Documents\SamsonTheSamurai\Memorai_Data\Manage
 Loading C:\Users\buddy\Documents\SamsonTheSamurai\Memorai_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
 Platform assembly: C:\Users\buddy\Documents\SamsonTheSamurai\Memorai_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
 Loading C:\Users\buddy\Documents\SamsonTheSamurai\Memorai_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
-- Completed reload, in  0.030 seconds
+- Completed reload, in  0.064 seconds
 Platform assembly: C:\Users\buddy\Documents\SamsonTheSamurai\Memorai_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\buddy\Documents\SamsonTheSamurai\Memorai_Data\Managed\System.dll (this message is harmless)
 <RI> Initializing input.
 <RI> Input initialized.
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initialized touch support.
-UnloadTime: 5.230606 ms
-Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 5.785667 ms
-
-Unloading 30 unused Assets to reduce memory usage. Loaded Objects now: 557.
-Total: 0.687010 ms (FindLiveObjects: 0.065975 ms CreateObjectMapping: 0.028444 ms MarkObjects: 0.321579 ms  DeleteObjects: 0.270221 ms)
-
-Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.828047 ms
-
-Unloading 56 unused Assets to reduce memory usage. Loaded Objects now: 1211.
-Total: 2.297279 ms (FindLiveObjects: 0.047012 ms CreateObjectMapping: 0.044641 ms MarkObjects: 0.342517 ms  DeleteObjects: 1.862712 ms)
-
+UnloadTime: 5.309623 ms
 Setting up 2 worker threads for Enlighten.
-  Thread -> id: 2620 -> priority: 1 
-  Thread -> id: 20a8 -> priority: 1 
+  Thread -> id: 1ca0 -> priority: 1 
+  Thread -> id: 24cc -> priority: 1 

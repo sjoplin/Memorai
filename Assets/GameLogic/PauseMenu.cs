@@ -12,6 +12,7 @@ public class PauseMenu : MonoBehaviour {
     public GameObject manager;
 
     int volume;
+
     void OnEnable() {
         GameObject manager = GameObject.FindGameObjectWithTag("GameManager");
         defeatedEnemiesText.text = "Lives Currently Left: " + manager.GetComponent<GameManager>().lives.ToString();
@@ -34,20 +35,26 @@ public class PauseMenu : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if ((Input.GetButtonDown("Pause")) && Time.timeScale == 0) {
-            gameObject.SetActive(false);
+            PlayerPrefs.SetFloat("Volume", volSlider.value);
             Time.timeScale = 1;
+            gameObject.SetActive(false);
         }
     }
 
     public void resume() {
+        PlayerPrefs.SetFloat("Volume", volSlider.value);
         Time.timeScale = 1;
         gameObject.SetActive(false);
     }
 
     public void mainMenu() {
         Time.timeScale = 1;
-        SceneManager.LoadScene(0);
-        Destroy(manager);
+        if (SceneManager.GetActiveScene().buildIndex == 23) {
+            SceneManager.LoadScene(4);
+        } else {
+            SceneManager.LoadScene(1);
+            Destroy(manager);
+        }
     }
 
     public void restartLevel() {

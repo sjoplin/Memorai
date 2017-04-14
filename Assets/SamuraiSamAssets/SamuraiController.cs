@@ -17,6 +17,7 @@ public class SamuraiController : MonoBehaviour {
 	float jumpVelocity = 25f;
 
 	private bool invert;
+    public GameObject confusionDucks;
 
 	public bool Invert {
 		get {
@@ -68,6 +69,11 @@ public class SamuraiController : MonoBehaviour {
 			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 		}
 
+        if (invert) {
+            confusionDucks.SetActive(true);
+        } else if (confusionDucks.activeSelf) {
+            confusionDucks.SetActive(false);
+        }
 		if (pauseMenu != null && Input.GetButtonDown("Pause")) {
 			Time.timeScale = 0;
 			if (pauseMenu.activeInHierarchy == false) pauseMenu.SetActive(true);

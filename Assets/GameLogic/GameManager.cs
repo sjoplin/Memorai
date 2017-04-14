@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour {
     public bool orig = false;
     int score = 0;
     int prevScore = 0;
-    public int lives = 3;
+    public int lives = 0;
     int multiplier = 1;
     string curLevel = "";
     Text scoreText;
@@ -28,10 +28,12 @@ public class GameManager : MonoBehaviour {
         scoreText = GameObject.FindGameObjectWithTag("scoreText").GetComponent<Text>();
         SceneManager.sceneLoaded += resetScene;
         orig = true;
+        
 	}
 
     void Update() {
-        scoreText.text = "Score: " + score;
+        scoreText.text = "Score: " + score + "\nLives: " + lives;
+        scoreText.verticalOverflow = VerticalWrapMode.Overflow;
     }
 	
 	// Update is called once per frame

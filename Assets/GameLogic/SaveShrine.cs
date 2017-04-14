@@ -7,6 +7,7 @@ public class SaveShrine : MonoBehaviour {
     bool activated = false;
     public GameObject fire;
     public GameObject showText;
+    GameManager manager;
 	// Use this for initialization
 	void Start () {
         activated = PlayerPrefs.GetInt("Checkpoint") == SceneManager.GetActiveScene().buildIndex;
@@ -31,6 +32,8 @@ public class SaveShrine : MonoBehaviour {
     void save() {
         PlayerPrefs.SetInt("Checkpoint", SceneManager.GetActiveScene().buildIndex);
         showText.SetActive(true);
+        GameManager manager = FindObjectOfType<GameManager>();
+        manager.lives += 3;
         fire.SetActive(true);
         activated = true;
     }

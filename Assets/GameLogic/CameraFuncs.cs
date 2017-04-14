@@ -11,29 +11,36 @@ public class CameraFuncs : MonoBehaviour {
     public bool followX = false;
     public bool followY = false;
     Transform target;
-
+    Camera cam;
     [Range(0, 1)]
     public float cameraDamping = 1f;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start() {
         origPos = transform.position;
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        
+
         //Maintains the Camera aspect ratio to ensure everything is in the same place
         //When running on different computers of different screen sizes.
-        Camera cam = GetComponent<Camera>();
+        cam = GetComponent<Camera>();
         //Screen.SetResolution(1280, 549, false);
         float screenRatio = cam.orthographicSize / (1280f / 549f);
         cam.orthographicSize = screenRatio * (cam.pixelHeight / cam.pixelWidth);
+        //oldHeight = cam.pixelHeight;
+        //oldWidth = cam.pixelWidth;
     }
 
     public bool getShaking() {
         return shaking;
     }
-	// Update is called once per frame
-	void Update () {
-		if (Input.GetKeyDown(KeyCode.F1)) {
+    // Update is called once per frame
+    int oldWidth = 1280;
+    int oldHeight = 549;
+    void Update() {
+        float normalAspect = 2;
+
+        cam.fieldOfView = 70 * normalAspect / ((float)cam.pixelWidth / cam.pixelHeight);
+        if (Input.GetKeyDown(KeyCode.F1)) {
             print(Screen.width + " , " + Screen.height);
         }
 

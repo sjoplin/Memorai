@@ -44,8 +44,10 @@ public class Spawner : MonoBehaviour {
 //					}
 //				}
 
-				if (Mathf.Abs (player.transform.position.x - spawnPoint.x) < 10) {
-					spawnPoint = spawnPoints[spawnPoints.Length - 1 - spawnPointNumber].GetComponent<Transform>().position;
+				if (Mathf.Abs (player.transform.position.x - spawnPoint.x) < 5) {
+                    spawnPointNumber -= 1;
+                    if (spawnPointNumber < 0) spawnPointNumber = spawnPoints.Length - 1;
+					spawnPoint = spawnPoints[spawnPointNumber].GetComponent<Transform>().position;
 				}
 
                 GameObject newEnemy = Instantiate(spawn, new Vector2(spawnPoint.x + Random.Range(-2,2), spawnPoint.y + Random.Range(-2,2)), Quaternion.identity);
